@@ -17,8 +17,9 @@ class CreatePostsTable extends Migration
             $table->text('post');
             $table->string('nick');
             $table->string('sex');
-            $table->integer('agree)');
-            $table->integer('disagree');
+            $table->integer('agree')->default(0);
+            $table->integer('disagree')->default(0);
+            $table->boolean('visible')->default(0);
             $table->timestamps();
         });
     }
