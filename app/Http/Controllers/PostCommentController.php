@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Post;
+use App\Comment;
+
 use App\Http\Requests;
 
 class PostCommentController extends Controller
@@ -13,9 +16,11 @@ class PostCommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($post_id)
     {
-        //
+        return Post::find($post_id)
+            ->comments()
+            ->get();
     }
 
     /**
@@ -45,9 +50,10 @@ class PostCommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($post_id, $comment_id)
     {
-        //
+        echo "Hit the show function";
+        echo $post_id;
     }
 
     /**

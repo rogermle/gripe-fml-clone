@@ -17,6 +17,7 @@ class PostsTableSeeder extends Seeder
         foreach(range(1,10) as $index)
         {
             Post::create([
+                'id'   => $index,
                 'nick' => str_replace('.', '_', $faker->unique()->userName),
                 'post' => $faker->sentence,
                 'sex' => $faker->randomElement(['Male', 'Female']),

@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostController@index');
+
+Route::resource('post', 'PostController');
+Route::resource('post.comments', 'PostCommentController');
 
 /*
 |--------------------------------------------------------------------------
