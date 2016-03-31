@@ -41,13 +41,15 @@ class PostCommentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'post_id' => 'numeric',
-            'comment' => 'required',
-            'visible'  => 'numeric',
-        ]);
-
-        Comment::create($request->toArray());
+        $input = $request->all();
+        if(!Post::find($input['post_id'])) {
+            $this->validate($request, [
+                'post_id' => 'numeric',
+                'comment' => 'required',
+                'visible' => 'numeric',
+            ]);
+            Comment::create($request->toArray());
+        }
     }
 
     /**
