@@ -11,10 +11,21 @@
                     {{ $post->body }}
                     <br>
                     <br>
-                    <a href="#" class="btn btn-warning btn-xs">Your life sucks!</a><span class="text-warning"> ({{$post->agree}})</span>
-                    <a href="#" class="btn btn-success btn-xs">You deserved it!</a><span class="text-warning"> ({{$post->disagree}})</span>
-                    <a href="{{route('post.show', ['post' => $post->id])}}" class="btn btn-link btn-xs">Comments</a><span class="text-warning"> ({{count($post->comments)}})</span>
-                    <span class="text-muted pull-right"><small>Created by: {{$post->nick}} on {{date('F d, Y h:i A', strtotime($post->created_at)) }}</small></span>
+                    <form class="btn-group" role="form" action="{{route('post.like', ['id'=>$post->id])}}" method="post">
+                        <input type="submit" class="btn btn-success btn-xs" value="Your life sucks!" /><span class="text-warning"> ({{$post->agree}})</span>
+                        <input type="hidden" name="_method" value="put" />
+                        <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                    </form>
+
+                    <form class="btn-group" role="form" action="{{route('post.dislike', ['id'=>$post->id])}}" method="post">
+                        <input type="submit" class="btn btn-warning btn-xs" value="You deserved it!" /><span class="text-warning"> ({{$post->disagree}})</span>
+                        <input type="hidden" name="_method" value="put" />
+                        <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                    </form>
+                    <form class="btn-group">
+                        <a href="{{route('post.show', ['post' => $post->id])}}" class="btn btn-link btn-xs">Comments</a><span class="text-warning"> ({{count($post->comments)}})</span>
+                    </form>
+                    <span class="text-muted pull-right"><small>Created by: {{$post->nick}} ({{$post->sex}}) on {{date('F d, Y h:i A', strtotime($post->created_at)) }}</small></span>
                 </div>
             @endforeach
 

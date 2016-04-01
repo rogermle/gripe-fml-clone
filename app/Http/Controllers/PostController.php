@@ -113,6 +113,8 @@ class PostController extends Controller
         }
         $post->agree++;
         $post->save();
+
+        return redirect()->route('post.index');
     }
 
     public function downvote($id)
@@ -124,6 +126,8 @@ class PostController extends Controller
         }
         $post->disagree++;
         $post->save();
+
+        return redirect()->route('post.index');
     }
 
     public function search(Request $request)

@@ -14,10 +14,13 @@
             <hr/>
         </div>
         <div class="row">
+            <ol style="list-style: decimal inside;">
             @foreach($post->comments as $comment)
-                <p>{{$comment->comment}}</p>
-                <hr/>
+                    <li>{{$comment->comment}}</li>
+                    <hr/>
             @endforeach
+            </ol>
+
         </div>
         <div class="row">
             @include('common.errors')

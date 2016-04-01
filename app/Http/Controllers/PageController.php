@@ -11,12 +11,16 @@ class PageController extends Controller
 {
     public function topgripes(Request $request)
     {
-        $posts = Post::orderBy('agree', 'desc');
+        $posts = Post::where('visible', 1)
+                     ->orderBy('agree', 'desc');
+
         if($request->ajax())
         {
-            return $posts;
+            return $posts->get();
         }
-        return view('page.topgripes')->with('posts', $posts->paginate(10));
+        return view('page.topgripes')
+            ->with('posts', $posts->paginate(10)
+            );
     }
 
     public function randomgripes(Request $request)
@@ -24,7 +28,9 @@ class PageController extends Controller
         $posts = Post::orderByRaw('RAND()');
         if($request->ajax())
             return $posts;
-        return view('page.randomgripes')->with('posts', $posts->paginate(10));
+        return view('page.randomgripes')
+                ->with('posts', $posts->paginate(10)
+            );
 
     }
 }
