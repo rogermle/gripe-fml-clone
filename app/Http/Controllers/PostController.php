@@ -28,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class PostController extends Controller
             'nick' => 'required',
             'sex'  => 'required',
         ]);
-        
+
         Post::create($request->toArray());
 
     }
@@ -90,6 +90,16 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        //
+    }
+
+    public function upvote($id)
+    {
+        //
+    }
+
+    public function downvote($id)
     {
         //
     }

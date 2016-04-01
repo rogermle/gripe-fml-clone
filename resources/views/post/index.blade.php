@@ -1,49 +1,90 @@
-<!-- resources/views/tasks/index.blade.php -->
+<!-- resources/views/post/index.blade.php -->
 
 @extends('layouts.app')
 
 @section('content')
+    <div class="container">
+        <p>
+            <a href="{{url('/post/create')}}"><button class="btn btn-primary">Submit your gripe!</button></a>
+        </p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                @foreach($posts as $post)
+                <div class="well">
+                     {{ $post->post }}
+                    <br>
+                    <br>
+                    <a href="#" class="btn btn-warning btn-xs">Your life sucks!</a><span class="text-warning"> ({{$post->agree}})</span>
+                    <a href="#" class="btn btn-success btn-xs">You deserved it!</a><span class="text-warning"> ({{$post->disagree}})</span>
+                    <a href="#" class="btn btn-link btn-xs">Comments</a><span class="text-warning"> ({{count($post->comments()->get())}})</span>
+                    <span class="text-muted pull-right"><small>Created by: {{$post->nick}} on {{date('F d, Y h:i A', strtotime($post->created_at)) }}</small></span>
+                </div>
+                @endforeach
 
-        <!-- Bootstrap Boilerplate... -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script src=""></script>
-<div class="panel-body">
-    <!-- Display Validation Errors -->
-    @include('common.errors')
-            <!-- New Task Form -->
-    <form action="{{ url('post') }}" method="POST" class="form-horizontal">
-        {!! csrf_field() !!}
-
-                <!-- Task Name -->
-        <div class="form-group">
-            <label for="post" class="col-sm-3 control-label">Post</label>
-
-            <div class="col-sm-6">
-                <input type="text" name="Post" id="post" class="form-control">
+                <ul class="pagination pull-right">
+                    <li class="disabled"><a href="#"><<</a></li>
+                    <li class="disabled"><a href="#">1</a></li>
+                    <li class="disabled"><a href="#">2</a></li>
+                    <li class="disabled"><a href="#">3</a></li>
+                    <li class="disabled"><a href="#">4</a></li>
+                    <li class="disabled"><a href="#">5</a></li>
+                    <li class="disabled"><a href="#">>></a></li>
+                </ul>
             </div>
-        </div>
 
-        <!-- Add Post Button -->
-        <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-6">
-                <button type="submit" class="btn btn-default">
-                    <i class="fa fa-plus"></i> Add Post
-                </button>
-            </div>
-        </div>
-    </form>
-
-
-    @foreach( $posts as $post )
-            <div class="col-sm-offset-3 col-sm-6">
-                <div class="well well">
-                    <p>{{ $post->post }}</p>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Categories</div>
+                    <div class="panel-body" style="padding: 0px;">
+                        <div class="col-md-6" style="padding: 0px;">
+                            <div class="table-responsive" style="border-left: 0;">
+                                <table class="table table-striped table-hover table-bordered" style="margin: 0px;">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="padding: 0px;">
+                            <div class="table-responsive" style="border-left: 0;">
+                                <table class="table table-striped table-hover table-bordered" style="margin: 0px;">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-    @endforeach
-
-</div>
-
-<!-- TODO: Current Posts -->
+        </div>
+    </div>
 @endsection

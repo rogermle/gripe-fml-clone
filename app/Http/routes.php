@@ -13,6 +13,8 @@
 
 Route::get('/', 'PostController@index');
 
+Route::put('post/{post}/like', ['as' => 'post.like', 'uses' =>'PostController@upvote']);
+Route::put('post/{post}/dislike', ['as' => 'post.dislike', 'uses' =>'PostController@downvote']);
 Route::resource('post', 'PostController');
 Route::resource('post.comments', 'PostCommentController');
 
