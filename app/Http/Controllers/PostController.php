@@ -103,4 +103,17 @@ class PostController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->get('query');
+        if(!$query)
+        {
+            $posts = Post::all();
+            return view('post.index')->with('posts', $posts);
+        }
+        $searchedPosts = Post::where('post', 'LIKE', "%$query%")->get();
+        return view('post.index')->with('posts', $searchedPosts);
+        ;
+    }
 }
