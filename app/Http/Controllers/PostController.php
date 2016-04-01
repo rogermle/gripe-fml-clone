@@ -16,7 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(25);
+        $posts = Post::where('visible', 1)
+                        ->orderBy('created_at', 'DESC')
+                        ->paginate(25);
 
         return view('post.index')->with('posts', $posts);
     }
@@ -46,6 +48,8 @@ class PostController extends Controller
         ]);
 
         Post::create($request->toArray());
+
+        return redirect()->route('post.index');
 
     }
 
