@@ -16,7 +16,7 @@
 </head>
 
 <!-- Bootstrap Boilerplate... -->
-<link href="https://bootswatch.com/slate/bootstrap.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://bootswatch.com/spacelab/bootstrap.css" rel="stylesheet" crossorigin="anonymous">
 <link href="/css/style.css" rel="stylesheet">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src=""></script>
@@ -31,15 +31,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Gripe</a>
+                <a class="navbar-brand" href="{{url('/')}}">Gripe</a>
 
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Top Gripes<span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Random Gripes</a></li>
+                    <li class="{{set_active('topgripes')}}"><a href="{{route('topgripes')}}">Top Gripes<span class="sr-only">(current)</span></a></li>
+                    <li class="{{set_active('randomgripes')}}"><a href="{{route('randomgripes')}}">Random Gripes</a></li>
                 </ul>
                 <form class="navbar-form navbar-left" role="search" method="get" action="/post/search">
                     <div class="form-group">

@@ -40,7 +40,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'post' => 'required|max:255',
+            'body' => 'required|max:255',
             'nick' => 'required',
             'sex'  => 'required',
         ]);
@@ -55,9 +55,15 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        return Post::find($id);
+        $post = Post::find($id);
+        if($request->ajax())
+        {
+            return $post;
+        }
+        return view('post.show')->with('post', $post);
+        
     }
 
     /**
@@ -96,12 +102,24 @@ class PostController extends Controller
 
     public function upvote($id)
     {
-        //
+        $post = Post::find($id);
+        if(!$post)
+        {
+            throw new \Exception('Unable to find post');
+        }
+        $post->agree++;
+        $post->save();
     }
 
     public function downvote($id)
     {
-        //
+        $post = Post::find($id);
+        if(!$post)
+        {
+            throw new \Exception('Unable to find post');
+        }
+        $post->disagree++;
+        $post->save();
     }
 
     public function search(Request $request)

@@ -1,4 +1,4 @@
-<!-- resources/views/post/index.blade.php -->
+<!-- resources/views/page/topgripes.blade.php -->
 
 @extends('layouts.app')
 
@@ -12,15 +12,15 @@
         <div class="row">
             <div class="col-md-8">
                 @foreach($posts as $post)
-                <div class="well">
-                     {{ $post->body }}
-                    <br>
-                    <br>
-                    <a href="#" class="btn btn-warning btn-xs">Your life sucks!</a><span class="text-warning"> ({{$post->agree}})</span>
-                    <a href="#" class="btn btn-success btn-xs">You deserved it!</a><span class="text-warning"> ({{$post->disagree}})</span>
-                    <a href="{{route('post.show', ['post' => $post->id])}}" class="btn btn-link btn-xs">Comments</a><span class="text-warning"> ({{count($post->comments)}})</span>
-                    <span class="text-muted pull-right"><small>Created by: {{$post->nick}} on {{date('F d, Y h:i A', strtotime($post->created_at)) }}</small></span>
-                </div>
+                    <div class="well">
+                        {{ $post->body }}
+                        <br>
+                        <br>
+                        <a href="#" class="btn btn-warning btn-xs">Your life sucks!</a><span class="text-warning"> ({{$post->agree}})</span>
+                        <a href="#" class="btn btn-success btn-xs">You deserved it!</a><span class="text-warning"> ({{$post->disagree}})</span>
+                        <a href="{{route('post.show', ['post' => $post->id])}}" class="btn btn-link btn-xs">Comments</a><span class="text-warning"> ({{count($post->comments)}})</span>
+                        <span class="text-muted pull-right"><small>Created by: {{$post->nick}} on {{date('F d, Y h:i A', strtotime($post->created_at)) }}</small></span>
+                    </div>
                 @endforeach
 
                 {{$posts->links() }}
@@ -74,9 +74,9 @@
                                 </table>
                             </div>
                         </div> -->
-                    </div>
-                </div>
-            </div>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
 @endsection

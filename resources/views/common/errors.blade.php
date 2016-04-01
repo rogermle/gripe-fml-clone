@@ -2,7 +2,7 @@
 
 @if (count($errors) > 0)
         <!-- Form Error List -->
-<div class="alert alert-danger">
+<div class="col-md-8 alert alert-danger">
     <strong>Whoops! Something went wrong!</strong>
 
     <br><br>
