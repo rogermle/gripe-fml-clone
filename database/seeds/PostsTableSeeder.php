@@ -19,7 +19,7 @@ class PostsTableSeeder extends Seeder
             Post::create([
                 'id'   => $index,
                 'nick' => str_replace('.', '_', $faker->unique()->userName),
-                'post' => $faker->sentence,
+                'body' => $faker->sentence,
                 'sex' => $faker->randomElement(['Male', 'Female']),
                 'agree' => $faker->randomNumber(6),
                 'disagree' => $faker->randomNumber(6),

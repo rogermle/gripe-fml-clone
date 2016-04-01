@@ -18,9 +18,13 @@ class PostCommentController extends Controller
      */
     public function index($post_id)
     {
-        return Post::find($post_id)
-            ->comments()
-            ->get();
+
+        $post = Post::find($post_id);
+        $comments = $post->comments()
+        ->get();
+        $data = ['post' => $post, 'comments' => $comments];
+        var_dump($data['post']['body']);die();
+        return view('post.comments.index')->with('data', $data);
     }
 
     /**

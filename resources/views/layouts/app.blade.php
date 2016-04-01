@@ -48,8 +48,8 @@
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Sign in</a></li>
-                    <li><a href="#">Sign up</a></li>
+                    <!--<li><a href="#">Sign in</a></li>
+                    <li><a href="#">Sign up</a></li>-->
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

@@ -112,7 +112,7 @@ class PostController extends Controller
             $posts = Post::paginate(25);
             return view('post.index')->with('posts', $posts);
         }
-        $searchedPosts = Post::where('post', 'LIKE', "%$query%")->paginate(25);
+        $searchedPosts = Post::where('body', 'LIKE', "%$query%")->paginate(25);
         return view('post.index')->with('posts', $searchedPosts);
     }
 }

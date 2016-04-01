@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('post');
+            $table->text('body');
             $table->string('nick');
             $table->string('sex');
             $table->integer('agree')->default(0);
