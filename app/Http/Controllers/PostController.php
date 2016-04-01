@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(25);
 
         return view('post.index')->with('posts', $posts);
     }
@@ -109,11 +109,10 @@ class PostController extends Controller
         $query = $request->get('query');
         if(!$query)
         {
-            $posts = Post::all();
+            $posts = Post::paginate(25);
             return view('post.index')->with('posts', $posts);
         }
-        $searchedPosts = Post::where('post', 'LIKE', "%$query%")->get();
+        $searchedPosts = Post::where('post', 'LIKE', "%$query%")->paginate(25);
         return view('post.index')->with('posts', $searchedPosts);
-        ;
     }
 }

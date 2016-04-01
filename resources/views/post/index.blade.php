@@ -23,15 +23,7 @@
                 </div>
                 @endforeach
 
-                <ul class="pagination pull-right">
-                    <li class="disabled"><a href="#"><<</a></li>
-                    <li class="disabled"><a href="#">1</a></li>
-                    <li class="disabled"><a href="#">2</a></li>
-                    <li class="disabled"><a href="#">3</a></li>
-                    <li class="disabled"><a href="#">4</a></li>
-                    <li class="disabled"><a href="#">5</a></li>
-                    <li class="disabled"><a href="#">>></a></li>
-                </ul>
+                {{$posts->links() }}
             </div>
 
             <div class="col-md-4">
