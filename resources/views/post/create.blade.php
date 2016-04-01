@@ -17,6 +17,7 @@
                     <label for="comment">Gripe:</label>
                     <textarea class="form-control" rows="5" name="body" id="gripe"></textarea>
                 </div>
+
                 <div class="form-group">
                     <input type="submit" value="Submit Gripe" class="btn btn-primary pull-left" />
                 </div>

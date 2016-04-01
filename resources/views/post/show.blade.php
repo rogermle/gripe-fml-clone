@@ -3,14 +3,33 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <hr>
         <div class="row">
-            {{$post->body}}
+            <hr>
+            <p>Posted on {{date('F d, Y h:i A', strtotime($post->created_at)) }}</p>
+            <p>by {{$post->nick}}</p>
+            <hr/>
+        </div>
+        <div class="row">
+            <p>{{$post->body}}</p>
+            <hr/>
         </div>
         <div class="row">
             @foreach($post->comments as $comment)
                 <p>{{$comment->comment}}</p>
+                <hr/>
             @endforeach
+        </div>
+        <div class="row">
+            @include('common.errors')
+            <form action="{{route('post.comments.store', ['post' => $post->id])}}" method="post">
+                    <div class="form-group">
+                        <label for="comment">Leave a comment</label>
+                        <textarea class="form-control" name="comment" id="comment" rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Comment" class="btn btn-primary pull-left" />
+                    </div>
+            </form>
         </div>
     </div>
 </div>

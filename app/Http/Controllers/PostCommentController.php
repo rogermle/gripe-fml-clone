@@ -37,17 +37,27 @@ class PostCommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($post_id, Request $request)
     {
-        $input = $request->all();
-        if(!Post::find($input['post_id'])) {
+        $post = Post::find($post_id);
+        $comment = $request->get('comment');
+
+        if(!empty($post)) {
             $this->validate($request, [
-                'post_id' => 'numeric',
                 'comment' => 'required',
-                'visible' => 'numeric',
             ]);
-            Comment::create($request->toArray());
+            $data = [
+                'post_id' => $post_id,
+                'comment' => $comment
+            ];
+            Comment::create($data);
+            if($request->ajax())
+            {
+                //TODO: Return a valid HTTP code like 200
+            }
+
         }
+        return redirect()->route('post.show', $post_id);
     }
 
     /**
