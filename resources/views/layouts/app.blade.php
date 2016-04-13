@@ -40,6 +40,7 @@
                 <ul class="nav navbar-nav">
                     <li class="{{set_active('topgripes')}}"><a href="{{route('topgripes')}}">Top Gripes<span class="sr-only">(current)</span></a></li>
                     <li class="{{set_active('randomgripes')}}"><a href="{{route('randomgripes')}}">Random Gripes</a></li>
+                    <li class="{{set_active('moderategripes')}}"><a href="{{route('moderategripes')}}">Moderate the Gripes</a></li>
                 </ul>
                 <form class="navbar-form navbar-left" role="search" method="get" action="/post/search">
                     <div class="form-group">

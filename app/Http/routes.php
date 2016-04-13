@@ -14,9 +14,12 @@
 Route::get('/', 'PostController@index');
 Route::get('/topgripes', ['as' => 'topgripes', 'uses' =>'PageController@topgripes']);
 Route::get('/randomgripes', ['as'=> 'randomgripes', 'uses' => 'PageController@randomgripes']);
+Route::get('/moderategripes', ['as' => 'moderategripes', 'uses' => 'PageController@moderategripes']);
 Route::get('post/search', ['as' => 'post.search', 'uses' => 'PostController@search']);
+
 Route::put('post/{post}/like', ['as' => 'post.like', 'uses' =>'PostController@upvote']);
 Route::put('post/{post}/dislike', ['as' => 'post.dislike', 'uses' =>'PostController@downvote']);
+
 Route::resource('post', 'PostController');
 Route::resource('post.comments', 'PostCommentController');
 
